@@ -50,7 +50,7 @@ metadata {
                 [value: 1000, color: "#e86d13"]
  				]
             }
-            tileAttribute ("battery", "device.battery", key: "SECONDARY_CONTROL") {
+            tileAttribute ("battery", key: "SECONDARY_CONTROL") {
 				attributeState "battery_percent", label:'${currentValue}%'
 			}           
 		} 
@@ -75,7 +75,7 @@ metadata {
         valueTile("temp_trend", "temp_trend", width: 4, height: 1) {
  			state "temp_trend", label: 'Temp Trend: ${currentValue}'
  		}         
-		valueTile("humidity", width: 2, height: 2, inactiveLabel: false) {
+		valueTile("humidity", "device.humidity", width: 2, height: 2, inactiveLabel: false) {
 			state "humidity", label:'${currentValue}%', icon:"st.Weather.weather12"
 		}
         valueTile("lastupdate", "lastupdate", width: 4, height: 1, inactiveLabel: false) { 			
