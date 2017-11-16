@@ -75,7 +75,7 @@ metadata {
         valueTile("temp_trend", "temp_trend", width: 4, height: 1) {
  			state "temp_trend", label: 'Temp Trend: ${currentValue}'
  		}         
-		valueTile("humidity", "device.humidity", width: 2, height: 2, inactiveLabel: false) {
+		valueTile("humidity","device.humidity", width: 2, height: 2, inactiveLabel: false) {
 			state "humidity", label:'${currentValue}%', icon:"st.Weather.weather12"
 		}
         valueTile("lastupdate", "lastupdate", width: 4, height: 1, inactiveLabel: false) { 			
