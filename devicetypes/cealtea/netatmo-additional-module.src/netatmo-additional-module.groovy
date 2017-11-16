@@ -50,8 +50,8 @@ metadata {
                 [value: 1000, color: "#e86d13"]
  				]
             }
-            tileAttribute ("humidity", key: "SECONDARY_CONTROL") {
-				attributeState "humidity", label:'Humidity: ${currentValue}%'
+            tileAttribute ("battery", "device.battery", key: "SECONDARY_CONTROL") {
+				attributeState "battery_percent", label:'${currentValue}%'
 			}           
 		} 
         valueTile("temperature", "device.temperature", width: 2, height: 2, inactiveLabel: false) {
@@ -75,16 +75,8 @@ metadata {
         valueTile("temp_trend", "temp_trend", width: 4, height: 1) {
  			state "temp_trend", label: 'Temp Trend: ${currentValue}'
  		}         
-		valueTile("battery", "device.battery", inactiveLabel: false, width: 2, height: 2) {
-			state "battery_percent", label:'Battery: ${currentValue}%', backgroundColors:[
-                [value: 20, color: "#ff0000"],
-                [value: 35, color: "#fd4e3a"],
-                [value: 50, color: "#fda63a"],
-                [value: 60, color: "#fdeb3a"],
-                [value: 75, color: "#d4fd3a"],
-                [value: 90, color: "#7cfd3a"],
-                [value: 99, color: "#55fd3a"]
-            ]
+		valueTile("humidity", width: 2, height: 2, inactiveLabel: false) {
+			state "humidity", label:'${currentValue}%', icon:"st.Weather.weather12"
 		}
         valueTile("lastupdate", "lastupdate", width: 4, height: 1, inactiveLabel: false) { 			
             state "default", label:"Last updated: " + '${currentValue}' 		
@@ -100,7 +92,7 @@ metadata {
  		}              
                
         main "main"
- 		details(["main", "min_temp","date_min_temp","temperature", "max_temp","date_max_temp", "temp_trend","lastupdate","battery","refresh"])
+ 		details(["main", "min_temp","date_min_temp","temperature", "max_temp","date_max_temp", "temp_trend","lastupdate","humidity","refresh"])
 	}
 }
 
