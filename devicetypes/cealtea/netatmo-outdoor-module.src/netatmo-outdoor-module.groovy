@@ -54,8 +54,8 @@ metadata {
 					[value: 98, color: "#bc2323"]
 				]
             }
-            tileAttribute ("humidity", key: "SECONDARY_CONTROL") {
-				attributeState "humidity", label:'Humidity: ${currentValue}%'
+            tileAttribute ("battery", key: "SECONDARY_CONTROL") {
+				attributeState "battery", label:'${currentValue}%'
 			}
 		} 
         valueTile("min_temp", "min_temp", width: 2, height: 1) {
@@ -67,17 +67,6 @@ metadata {
         valueTile("temp_trend", "temp_trend", width: 4, height: 1) {
  			state "temp_trend", label: 'Temp Trend: ${currentValue}'
  		}        
-		valueTile("battery", "device.battery", inactiveLabel: false, width: 2, height: 2) {
-			state "battery_percent", label:'Battery: ${currentValue}%', unit:"", backgroundColors:[
-                [value: 20, color: "#ff0000"],
-                [value: 35, color: "#fd4e3a"],
-                [value: 50, color: "#fda63a"],
-                [value: 60, color: "#fdeb3a"],
-                [value: 75, color: "#d4fd3a"],
-                [value: 90, color: "#7cfd3a"],
-                [value: 99, color: "#55fd3a"]
-            ]
-		}
 		valueTile("temperature", "device.temperature") {
  			state("temperature", label: '${currentValue}°', icon:"st.Weather.weather2", backgroundColors: [
  				[value: 31, color: "#153591"],
@@ -89,7 +78,10 @@ metadata {
  				[value: 96, color: "#bc2323"]
  				]
  				)
- 		}        
+ 		}  
+        valueTile("humidity", "device.humidity", inactiveLabel: false, width: 2, height: 2) {
+			state "humidity", label:'${currentValue}%', icon:"st.Weather.weather12"
+		}
  		valueTile("lastupdate", "lastupdate", width: 4, height: 1, inactiveLabel: false) { 			
           state "default", label:"Last updated: " + '${currentValue}' 		
           }
@@ -103,7 +95,7 @@ metadata {
  			state "default", action:"refresh.refresh", icon:"st.secondary.refresh"
  		}                
         main (["main"])
- 		details(["main", "min_temp","date_min_temp", "battery", "max_temp","date_max_temp", "temp_trend", "lastupdate","refresh"])
+ 		details(["main", "min_temp","date_min_temp", "humidity", "max_temp","date_max_temp", "temp_trend", "lastupdate","refresh"])
 	}
 }
 
