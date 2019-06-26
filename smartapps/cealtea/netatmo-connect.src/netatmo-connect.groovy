@@ -387,10 +387,10 @@ def uninstalled() {
 
 def getDeviceList() {
 	log.debug "Refreshing station data"
-def deviceList = [:]
-def moduleName = null
-state.deviceDetail = [:]
-state.deviceState = [:]
+	def deviceList = [:]
+	def moduleName = null
+	state.deviceDetail = [:]
+	state.deviceState = [:]
 
 apiGet("/api/getstationsdata",["get_favorites":true]) { resp ->
     	state.response = resp.data.body
@@ -459,6 +459,8 @@ def createChildDevice(deviceFile, dni, name, label) {
 			def childDevice = addChildDevice("cealtea", deviceFile, dni, null, [name: name, label: label, completedSetup: true])
 		} else {
 			log.debug "Device $dni already exists"
+			deleteChildDevice(dni)
+			def childDevice = addChildDevice("cealtea", deviceFile, dni, null, [name: name, label: label, completedSetup: true])
 		}
 	} catch (e) {
 		log.error "Error creating device: ${e}"
