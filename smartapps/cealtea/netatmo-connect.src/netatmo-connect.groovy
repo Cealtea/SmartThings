@@ -426,7 +426,7 @@ apiGet("/api/getstationsdata",["get_favorites":true]) { resp ->
                         break
                         }
               
-                    deviceList[key2] = "${value.station_name}: ${moduleName}"
+                    deviceList[key2] = "${moduleName}"
                     state.deviceDetail[key2] = value2 << ["module_name" : moduleName]
                     state.deviceState[key2] = value2.dashboard_data						
                 	}
