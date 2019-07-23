@@ -5,7 +5,7 @@
 import java.text.DecimalFormat
 import groovy.json.JsonSlurper
 
-private getApiUrl()			{ "https://dev.netatmo.com" }
+private getApiUrl()			{ "https://api.netatmo.com" }
 private getVendorName()		{ "netatmo" }
 private getVendorAuthPath()	{ "${apiUrl}/oauth2/authorize?" }
 private getVendorTokenPath(){ "${apiUrl}/oauth2/token" }
